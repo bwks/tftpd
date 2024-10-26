@@ -93,8 +93,8 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
       with:
-        context: .
-        file: container/Dockerfile
+        context: ./container
+        file: ./container/Dockerfile
         push: true
         tags: |
           ghcr.io/${{ github.repository }}:${{ steps.get_version.outputs.VERSION }}
