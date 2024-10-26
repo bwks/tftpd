@@ -70,6 +70,12 @@ jobs:
       with:
         path: container
 
+    - name: testing
+      run: ls -la 
+
+    - name: testing2
+      run: ls -la container
+
     - name: Checkout tftp repo
       uses: actions/checkout@v4
       with:
@@ -93,7 +99,6 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
       with:
-        context: ./container
         file: ./container/Dockerfile
         push: true
         tags: |
