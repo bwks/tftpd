@@ -70,16 +70,16 @@ jobs:
       with:
         path: container
 
-    - name: testing
-      run: ls -la 
-
-    - name: testing2
-      run: ls -la container
-
     - name: Checkout tftp repo
       uses: actions/checkout@v4
       with:
         repository: altugbakan/rs-tftpd
+
+    - name: testing
+      run: ls -la 
+  
+    - name: testing2
+      run: ls -la container
 
     - name: Get version
       id: get_version
