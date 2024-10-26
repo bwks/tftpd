@@ -65,16 +65,16 @@ jobs:
       contents: read
 
     steps:
-    - name: Checkout this repo
-      uses: actions/checkout@v4
-      with:
-        path: container
-
     - name: Checkout tftp repo
       uses: actions/checkout@v4
       with:
         repository: altugbakan/rs-tftpd
 
+    - name: Checkout this repo
+      uses: actions/checkout@v4
+      with:
+        path: container
+  
     - name: testing
       run: ls -la 
   
