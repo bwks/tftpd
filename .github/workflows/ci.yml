@@ -16,11 +16,6 @@ jobs:
       contents: "write"
 
     steps:
-    - name: Checkout this repo
-      uses: actions/checkout@v4
-      with:
-        path: container
-
     - name: Checkout tftp repo
       uses: actions/checkout@v4
       with:
@@ -70,7 +65,12 @@ jobs:
       contents: read
 
     steps:
-    - name: Checkout the repo
+    - name: Checkout this repo
+      uses: actions/checkout@v4
+      with:
+        path: container
+
+    - name: Checkout tftp repo
       uses: actions/checkout@v4
       with:
         repository: altugbakan/rs-tftpd
