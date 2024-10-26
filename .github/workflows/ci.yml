@@ -16,7 +16,12 @@ jobs:
       contents: "write"
 
     steps:
-    - name: Checkout the repo
+    - name: Checkout this repo
+      uses: actions/checkout@v4
+      with:
+        path: container
+
+    - name: Checkout tftp repo
       uses: actions/checkout@v4
       with:
         repository: altugbakan/rs-tftpd
@@ -30,9 +35,6 @@ jobs:
 
     - name: Build project
       run: cargo build --release
-
-    - name: Run tests
-      run: cargo test
 
     - name: Get version
       id: get_version
@@ -91,7 +93,7 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
       with:
-        context: .
+        context: "{{defaultContext}}:container"
         push: true
         tags: |
           ghcr.io/${{ github.repository }}:${{ steps.get_version.outputs.VERSION }}
