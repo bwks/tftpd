@@ -22,6 +22,3 @@ COPY --from=builder /usr/src/app/target/release/tftpd /usr/local/bin/tftpd
 
 # Expose port
 EXPOSE 6969
-
-# Run the web service
-CMD ["tftpd", "-i", "0.0.0.0", "-p", 6969, "-d", "/opt/ztp", "-r"]
