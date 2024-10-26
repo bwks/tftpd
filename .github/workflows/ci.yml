@@ -37,7 +37,7 @@ jobs:
     - name: Get version
       id: get_version
       run: | 
-        echo ::set-output name=VERSION::$(cargo pkgid | cut -d# -f2 | cut -d: -f2)
+        echo ::set-output name=VERSION::$(awk -F ' = ' '$1 == "version" { gsub(/["]/, "", $2); print $2 }' Cargo.toml)
 
     - name: Create Release
       id: create_release
@@ -76,7 +76,7 @@ jobs:
     - name: Get version
       id: get_version
       run: | 
-        echo ::set-output name=VERSION::$(cargo pkgid | cut -d# -f2 | cut -d: -f2)
+        echo ::set-output name=VERSION::$(awk -F ' = ' '$1 == "version" { gsub(/["]/, "", $2); print $2 }' Cargo.toml)
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
